@@ -1,0 +1,9 @@
+<nav class="navbar navbar-light bg-light">
+  <span class="navbar-brand mb-0 h1"><%= @cast_member.name %></span>
+</nav>
+
+<div class="list-group" style="width:50%">
+  <% @movies.each do |movie| %>
+    <%= link_to movie.title + " - " + movie.director, movie, {:class=>"list-group-item list-group-item-action"}%>
+  <%end%>
+</div>

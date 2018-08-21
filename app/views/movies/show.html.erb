@@ -1,0 +1,41 @@
+</br>
+
+<div>
+
+  <div id="movie">
+  <h1><%= @movie.title%></h1>
+
+  </br>
+
+  <h2>Director : <%= @movie.director%></h2>
+
+  <br>
+  </div>
+
+  <h3>Cast</h3>
+
+  <div class="list-group" style="width: 50%;" id="cast_members">
+      <%= render @cast_members%>
+  </div>
+  <br>
+
+  <%= form_tag "/movies/#{@movie.id}", method: "patch", remote: true do %>
+
+    <input class="form-control" type="text" name="title" value="<%= @movie.title%>" style="width:50%">
+
+    <input class="form-control" type="text" name="director" value="<%= @movie.director%>" style="width:50%">
+
+    <div style="float: left"><button type="submit" class="btn btn-info">Modify this movie</button></div>
+
+  <% end %>
+
+  <%= form_tag "/movies/#{@movie.id}", method: "delete" do %>
+
+    <div><button type="submit" class="btn btn-outline-danger">Delete this movie</button></div>
+
+  <% end %>
+  <br>
+
+  <a href="/movies" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Return to the list</a>
+
+</div>
