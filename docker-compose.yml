@@ -1,15 +1,18 @@
 version: '3'
 services:
   db:
-    image: tutoweb
+    image: postgres
     volumes:
       - ./tmp/db:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    hostname: postgres
 
   redis:
     image: redis:4.0.5-alpine
     command: ["redis-server", "--appendonly", "yes"]
     ports:
-      - 6379:6379
+      - 6381:6379
     hostname: redis
 
   web:
@@ -19,10 +22,12 @@ services:
     volumes:
       - .:/myapp
     ports:
-      - "3000:3000"
+      - "3003:3000"
     depends_on:
       - db
       - 'redis'
+    environment:
+      DATABASE_URL: postgres://postgres@db
 
   sidekiq:
     depends_on:

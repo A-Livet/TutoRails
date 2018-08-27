@@ -120,6 +120,7 @@ GEM
     nio4r (2.3.1)
     nokogiri (1.8.4)
       mini_portile2 (~> 2.3.0)
+    pg (1.0.0)
     popper_js (1.14.3)
     public_suffix (3.0.3)
     puma (3.12.0)
@@ -242,6 +243,7 @@ DEPENDENCIES
   jquery-rails
   listen (>= 3.0.5, < 3.2)
   mini_racer
+  pg
   puma (~> 3.11)
   rails (~> 5.2.1)
   rspec-rails
@@ -260,4 +262,4 @@ RUBY VERSION
    ruby 2.5.1p57
 
 BUNDLED WITH
-   1.16.3
+   1.16.4

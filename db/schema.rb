@@ -12,14 +12,17 @@
 
 ActiveRecord::Schema.define(version: 2018_08_15_074209) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "cast_members", force: :cascade do |t|
     t.string "name"
     t.string "role"
   end
 
   create_table "cast_members_movies", id: false, force: :cascade do |t|
-    t.integer "cast_member_id", null: false
-    t.integer "movie_id", null: false
+    t.bigint "cast_member_id", null: false
+    t.bigint "movie_id", null: false
     t.index ["cast_member_id"], name: "index_cast_members_movies_on_cast_member_id"
     t.index ["movie_id"], name: "index_cast_members_movies_on_movie_id"
   end

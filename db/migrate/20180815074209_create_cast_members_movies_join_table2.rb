@@ -4,6 +4,5 @@ class CreateCastMembersMoviesJoinTable2 < ActiveRecord::Migration[5.2]
       t.index :cast_member_id
       t.index :movie_id
     end
-    drop_table :castMembers_movies
   end
 end
