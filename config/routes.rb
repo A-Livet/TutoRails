@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+  get 'accounts/index'
+  get 'accounts/show'
+  get 'accounts/update'
+  devise_for :admins
+
+  devise_for :users, controllers: {
+      sessions: 'users/sessions'
+    }
+
+
   root :to => "pages#home"
   get 'Tuto' => 'pages#home'
 

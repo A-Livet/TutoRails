@@ -10,23 +10,42 @@
   </head>
 
   <body style="background-color: #F7F7F7; height: 100%;">
-    <header
+    <header style="height:65px;">
       <%= render 'layouts/header' %>
     </header>
 
 
-    <div>
+    <div id="mContent" class="container-fluid">
 
+      <% if ["cast_members","movies"].include?(controller_name) %>
       <div class="row">
-        <div class="col" style="background-color: #666666;">
+        <div class="d-none d-md-block col-md-3 col-xl-3 sidebar">
           <%= render 'layouts/sidebar' %>
         </div>
 
-        <div class="col-9">
+        <div class="col">
+          <% if notice %>
+            <p class="alert alert-success" style="text-align: center"><%= notice %></p>
+          <% end %>
+          <% if alert %>
+            <p class="alert alert-danger" style="text-align: center"><%= alert %></p>
+          <% end %>
           </br>
           <%= yield %>
         </div>
       </div>
+      <% else %>
+      <div style="margin: auto">
+        <% if notice %>
+          <p class="alert alert-success" style="text-align: center"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger" style="text-align: center"><%= alert %></p>
+        <% end %>
+        </br>
+        <%= yield %>
+      </div>
+      <%end %>
     </div>
   </body>
 </html>

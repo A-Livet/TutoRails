@@ -1,51 +1,57 @@
 <!DOCTYPE html>
 <html>
 
- <% if current_page?(:controller => 'movies', :action => 'index') %>
-<div style="margin-left: 10px;">
-  <%= form_tag movies_path, method: "post", :id => 'add_new_movie', remote: true do %>
-    </br>
-    <h2 style="color: #DADADA">Add a new movie</h2>
-    <br>
-    <%= text_field_tag :title, params[:title], :class=>"form-control", :placeholder=>"Title" %>
-    <br>
-    <%= text_field_tag :director, params[:director], :class=>"form-control", :placeholder=>"Director" %>
-    <br>
-    <%= submit_tag "Add", :class=>"btn btn-primary" , :style=>"float: right"%>
-    <br>
-  <% end %>
-</div>
+<% if action_name == "index" && controller_name == "movies"%>
+  <nav>
+    <div class="flex-column" >
+      <%= form_tag movies_path, method: "post", :id => 'add_new_movie', remote: true do %>
+        </br>
+        <h4 style="color: #DADADA">Add a new movie</h4>
+        <br>
+        <%= text_field_tag :title, params[:title], :class=>"form-control", :placeholder=>"Title" %>
+        <br>
+        <%= text_field_tag :director, params[:director], :class=>"form-control", :placeholder=>"Director" %>
+        <br>
+        <%= submit_tag "Add", :class=>"btn btn-primary" , :style=>"float: right"%>
+        <br>
+      <% end %>
+    </div>
+  </nav>
 
 <% elsif action_name == "index" && controller_name == "cast_members"%>
-  <div style="margin-left: 10px;">
-    <%= form_tag "/cast_members", method: "get" do %>
+  <nav>
+    <div style="margin-left: 10px;">
+      <%= form_tag "/cast_members", method: "get" do %>
 
-      <br>
-      <h2 style="color: #DADADA">Search a cast member</h2>
-      <br>
-      <input class="form-control" type="text" name="name" placeholder="Name" >
-      <br>
+        <br>
+        <h4 style="color: #DADADA">Search a cast member</h4>
+        <br>
+        <input class="form-control" type="text" name="name" placeholder="Name" >
+        <br>
 
-      <button type="submit" class="btn btn-info">Search</button>
+        <button type="submit" class="btn btn-info">Search</button>
 
-    <% end %>
-  </div>
+      <% end %>
+    </div>
+  </nav>
 
 
 <% elsif action_name == "show" && controller_name == "movies" %>
-<div style="margin-left: 10px;">
-  <%= form_tag '/movies/' + params[:id].to_s, method: "post", :id=>'add_cast_member', remote: true do %>
-    </br>
-    <h2 style="color: #DADADA">Add a new cast member</h2>
-    <br>
-    <%= text_field_tag :name, params[:name], :class=>"form-control", :placeholder=>"Name" %>
-    <br>
-    <%= text_field_tag :role, params[:role], :class=>"form-control", :placeholder=>"Role" %>
-    <br>
-    <%= submit_tag "Add", :class=>"btn btn-primary" , :style=>"float: right"%>
-    <br>
-  <% end %>
-</div>
+  <nav>
+    <div style="margin-left: 10px;">
+      <%= form_tag '/movies/' + params[:id].to_s, method: "post", :id=>'add_cast_member', remote: true do %>
+        </br>
+        <h4 style="color: #DADADA">Add a new cast member</h4>
+        <br>
+        <%= text_field_tag :name, params[:name], :class=>"form-control", :placeholder=>"Name" %>
+        <br>
+        <%= text_field_tag :role, params[:role], :class=>"form-control", :placeholder=>"Role" %>
+        <br>
+        <%= submit_tag "Add", :class=>"btn btn-primary" , :style=>"float: right"%>
+        <br>
+      <% end %>
+    </div>
+  </nav>
 <% end%>
 
 </html>
